@@ -1,0 +1,41 @@
+# Ingestion Configuration
+# Copy this to config.yaml and fill in your credentials
+
+# Platform Selection (databricks, snowflake, or bigquery)
+platform: "databricks"
+
+# Databricks Configuration
+databricks:
+  server_hostname: "your-workspace.cloud.databricks.com"
+  http_path: "/sql/1.0/warehouses/your-warehouse-id"
+  access_token: "your-access-token"
+  catalog: "physical_product_raw"
+
+# Snowflake Configuration
+snowflake:
+  account: "your-account.snowflakecomputing.com"
+  user: "your-username"
+  password: "your-password"
+  warehouse: "COMPUTE_WH"
+  database: "PHYSICAL_PRODUCT_DB"
+  schema: "RAW"
+  role: "SYSADMIN"
+
+# BigQuery Configuration
+bigquery:
+  project_id: "your-project-id"
+  dataset_id: "physical_product_raw"
+  credentials_path: "path/to/service-account-key.json"
+  location: "US"
+
+# Data Source
+data_source:
+  path: "sample_data"
+  file_format: "csv"
+
+# Ingestion Options
+options:
+  batch_size: 10000
+  truncate_before_load: false
+  create_tables_if_not_exist: true
+  skip_validation: false
