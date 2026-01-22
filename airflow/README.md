@@ -75,7 +75,7 @@ This directory contains Airflow DAGs that orchestrate the end-to-end data pipeli
 ### 1. Install Airflow
 
 ```bash
-pip install apache-airflow==2.10.4
+pip install apache-airflow==3.1.6
 export AIRFLOW_HOME=~/airflow
 airflow db init
 ```

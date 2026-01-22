@@ -14,8 +14,8 @@ dbt-databricks==1.6.13
 dbt-snowflake==1.6.13
 dbt-bigquery==1.6.13
 
-# Airflow - Updated to fix multiple security vulnerabilities
-apache-airflow==2.10.4
+# Airflow - Updated to fix all security vulnerabilities including proxy credentials leak
+apache-airflow==3.1.6
 apache-airflow-providers-databricks==6.14.0
 apache-airflow-providers-snowflake==6.4.0  # Updated to fix injection vulnerability
 apache-airflow-providers-google==10.26.0

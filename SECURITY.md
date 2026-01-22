@@ -6,7 +6,7 @@ This document tracks security vulnerabilities that were identified and fixed in 
 
 ## Vulnerabilities Fixed
 
-### 1. Apache Airflow (2.7.0 → 2.10.4)
+### 1. Apache Airflow (2.7.0 → 3.1.6)
 
 **Multiple Critical Vulnerabilities Fixed:**
 
@@ -14,43 +14,43 @@ This document tracks security vulnerabilities that were identified and fixed in 
 - **Severity**: HIGH
 - **Description**: Proxy credentials for various providers might leak in task logs
 - **Affected**: < 3.1.6
-- **Fixed in**: 2.10.4 (backported fix)
+- **Fixed in**: 3.1.6
 
 #### CVE: Execution with Unnecessary Privileges
 - **Severity**: HIGH
 - **Description**: Vulnerable to execution with unnecessary privileges
 - **Affected**: < 2.10.1
-- **Fixed in**: 2.10.4
+- **Fixed in**: 3.1.6
 
 #### CVE: DAG Author Code Execution
 - **Severity**: CRITICAL
 - **Description**: DAG Author Code Execution possibility in airflow-scheduler
 - **Affected**: >= 2.4.0, < 2.9.3
-- **Fixed in**: 2.10.4
+- **Fixed in**: 3.1.6
 
 #### CVE: Permission Bypass
 - **Severity**: MEDIUM
 - **Description**: Bypass permission verification to read code of other DAGs
 - **Affected**: >= 0, < 2.8.1rc1
-- **Fixed in**: 2.10.4
+- **Fixed in**: 3.1.6
 
 #### CVE: Pickle Deserialization
 - **Severity**: HIGH
 - **Description**: Pickle deserialization vulnerability in XComs
 - **Affected**: >= 0, < 2.8.1rc1
-- **Fixed in**: 2.10.4
+- **Fixed in**: 3.1.6
 
 #### CVE: Information Exposure (1)
 - **Severity**: MEDIUM
 - **Description**: Vulnerable to exposure of sensitive information to unauthorized actors
 - **Affected**: < 2.7.3
-- **Fixed in**: 2.10.4
+- **Fixed in**: 3.1.6
 
 #### CVE: Information Exposure (2)
 - **Severity**: MEDIUM
 - **Description**: Information exposure vulnerability
 - **Affected**: >= 0, < 2.7.1
-- **Fixed in**: 2.10.4
+- **Fixed in**: 3.1.6
 
 ### 2. Apache Airflow Providers - Snowflake (5.0.0 → 6.4.0)
 
@@ -80,7 +80,7 @@ This document tracks security vulnerabilities that were identified and fixed in 
 
 | Package | Old Version | New Version | CVEs Fixed |
 |---------|-------------|-------------|------------|
-| apache-airflow | 2.7.0 | 2.10.4 | 7 |
+| apache-airflow | 2.7.0 | 3.1.6 | 7 |
 | apache-airflow-providers-snowflake | 5.0.0 | 6.4.0 | 1 |
 | dbt-core | 1.6.0 | 1.6.13 | 1 |
 | dbt-databricks | 1.6.0 | 1.6.13 | 1 |
@@ -206,6 +206,7 @@ If you discover a security vulnerability in this project:
 
 | Date | Update | Reason |
 |------|--------|--------|
+| 2026-01-22 | Apache Airflow 3.1.6 | Fixed proxy credentials leak vulnerability |
 | 2026-01-22 | Initial security audit | Fixed 11+ CVEs in dependencies |
 
 ## References
