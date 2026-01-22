@@ -1,0 +1,25 @@
+# Data Generation
+pandas==2.0.3
+numpy==1.24.3
+faker==19.3.1
+
+# Data Warehouse Connectors
+databricks-sql-connector==2.9.3
+snowflake-connector-python==3.13.1  # Updated to fix SQL injection vulnerability
+google-cloud-bigquery==3.11.4
+
+# dbt - Updated to fix SQLparse vulnerability
+dbt-core==1.6.13
+dbt-databricks==1.6.13
+dbt-snowflake==1.6.13
+dbt-bigquery==1.6.13
+
+# Airflow - Updated to fix all security vulnerabilities including proxy credentials leak
+apache-airflow==3.1.6
+apache-airflow-providers-databricks==6.14.0
+apache-airflow-providers-snowflake==6.4.0  # Updated to fix injection vulnerability
+apache-airflow-providers-google==10.26.0
+
+# Utilities
+pyyaml==6.0.1
+python-dotenv==1.0.0

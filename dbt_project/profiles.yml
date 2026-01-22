@@ -1,0 +1,40 @@
+# dbt Profile Configuration
+# Copy this to ~/.dbt/profiles.yml and configure for your platform
+
+physical_product_platform:
+  target: dev
+  outputs:
+    
+    # Databricks Configuration
+    dev_databricks:
+      type: databricks
+      host: your-workspace.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/your-warehouse-id
+      schema: physical_product_raw
+      token: your-access-token
+      threads: 4
+      
+    # Snowflake Configuration  
+    dev_snowflake:
+      type: snowflake
+      account: your-account.snowflakecomputing.com
+      user: your-username
+      password: your-password
+      role: SYSADMIN
+      database: PHYSICAL_PRODUCT_DB
+      warehouse: COMPUTE_WH
+      schema: RAW
+      threads: 4
+      
+    # BigQuery Configuration
+    dev_bigquery:
+      type: bigquery
+      method: service-account
+      project: your-project-id
+      dataset: physical_product_raw
+      threads: 4
+      keyfile: /path/to/service-account-key.json
+      location: US
+      
+    # Default development target
+    dev: dev_databricks

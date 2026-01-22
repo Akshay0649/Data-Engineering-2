@@ -1,0 +1,27 @@
+# Airflow Variables Configuration
+# These can be set via UI or airflow CLI
+
+# Project configuration
+project_root: /path/to/Data-Engineering-2
+platform: databricks  # or snowflake, bigquery
+config_path: ingestion/config.yaml
+
+# Email configuration
+email_recipients: data-team@example.com
+
+# Scheduler configuration
+dag_concurrency: 16
+max_active_runs_per_dag: 3
+
+# dbt configuration
+dbt_profiles_dir: ~/.dbt
+dbt_target: dev
+
+# Data quality thresholds
+freshness_threshold_hours: 24
+completeness_threshold_pct: 95
+anomaly_z_score_threshold: 3
+
+# Retention policies
+log_retention_days: 30
+data_retention_days: 1825  # 5 years
