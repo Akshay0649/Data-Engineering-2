@@ -1,0 +1,60 @@
+name: 'physical_product_platform'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'physical_product_platform'
+
+# These configurations specify where dbt should look for different types of files.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+  - "logs"
+
+# Model Configurations
+models:
+  physical_product_platform:
+    # Staging models: 1:1 with source tables
+    staging:
+      +materialized: view
+      +schema: staging
+      
+    # Marts: dimensional and fact tables
+    marts:
+      +materialized: table
+      +schema: marts
+      
+      # Core business domains
+      core:
+        +materialized: table
+        
+      # Analytics and metrics
+      metrics:
+        +materialized: view
+
+# Test configurations
+tests:
+  physical_product_platform:
+    +store_failures: true
+    +schema: test_results
+
+# Seeds (static reference data)
+seeds:
+  physical_product_platform:
+    +schema: seeds
+
+# Vars (project variables)
+vars:
+  start_date: '2022-01-01'
+  test_data_limit: 1000
+
+# Documentation
+docs-paths: ["docs"]

@@ -1,0 +1,168 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw data layer from data warehouse
+    database: physical_product_raw
+    schema: raw
+    
+    tables:
+      - name: products
+        description: Product catalog with SKUs, pricing, and attributes
+        columns:
+          - name: product_id
+            description: Unique product identifier
+            tests:
+              - unique
+              - not_null
+          - name: sku
+            description: Stock keeping unit
+            tests:
+              - unique
+              - not_null
+          - name: is_active
+            description: Whether product is currently active
+            
+      - name: recipes
+        description: Manufacturing recipes and bill of materials
+        columns:
+          - name: recipe_id
+            description: Unique recipe identifier
+            tests:
+              - unique
+              - not_null
+          - name: product_id
+            description: Associated product
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw', 'products')
+                  field: product_id
+                  
+      - name: recipe_lines
+        description: Recipe line items with material requirements
+        columns:
+          - name: recipe_line_id
+            description: Unique recipe line identifier
+            tests:
+              - unique
+              - not_null
+          - name: recipe_id
+            description: Associated recipe
+            tests:
+              - not_null
+              
+      - name: customers
+        description: Customer demographics and account information
+        columns:
+          - name: customer_id
+            description: Unique customer identifier
+            tests:
+              - unique
+              - not_null
+          - name: email
+            description: Customer email address
+            tests:
+              - not_null
+              
+      - name: orders
+        description: Sales order headers
+        columns:
+          - name: order_id
+            description: Unique order identifier
+            tests:
+              - unique
+              - not_null
+          - name: customer_id
+            description: Associated customer
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw', 'customers')
+                  field: customer_id
+          - name: order_status
+            description: Current order status
+            tests:
+              - accepted_values:
+                  values: ['Pending', 'Confirmed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
+                  
+      - name: order_lines
+        description: Sales order line items
+        columns:
+          - name: order_line_id
+            description: Unique order line identifier
+            tests:
+              - unique
+              - not_null
+          - name: order_id
+            description: Associated order
+            tests:
+              - not_null
+          - name: product_id
+            description: Associated product
+            tests:
+              - not_null
+              
+      - name: shipments
+        description: Shipment and delivery tracking
+        columns:
+          - name: shipment_id
+            description: Unique shipment identifier
+            tests:
+              - unique
+              - not_null
+          - name: order_id
+            description: Associated order
+            tests:
+              - not_null
+          - name: shipment_status
+            description: Current shipment status
+            tests:
+              - accepted_values:
+                  values: ['Pending', 'In Transit', 'Out for Delivery', 'Delivered', 'Failed Delivery', 'Returned']
+                  
+      - name: returns
+        description: Product returns and refunds
+        columns:
+          - name: return_id
+            description: Unique return identifier
+            tests:
+              - unique
+              - not_null
+          - name: order_id
+            description: Associated order
+            tests:
+              - not_null
+          - name: return_status
+            description: Current return status
+            tests:
+              - accepted_values:
+                  values: ['Requested', 'Approved', 'In Transit', 'Received', 'Inspected', 'Refunded', 'Rejected']
+                  
+      - name: waste
+        description: Manufacturing waste and scrap tracking
+        columns:
+          - name: waste_id
+            description: Unique waste record identifier
+            tests:
+              - unique
+              - not_null
+          - name: waste_category
+            description: Waste category
+            tests:
+              - accepted_values:
+                  values: ['Recyclable', 'Non-Recyclable', 'Hazardous', 'Organic']
+                  
+      - name: quality_inspections
+        description: Quality control and inspection records
+        columns:
+          - name: inspection_id
+            description: Unique inspection identifier
+            tests:
+              - unique
+              - not_null
+          - name: inspection_status
+            description: Inspection result status
+            tests:
+              - accepted_values:
+                  values: ['Pass', 'Fail', 'Conditional Pass', 'Re-inspection Required']
