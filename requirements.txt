@@ -1,0 +1,25 @@
+# Data Generation
+pandas==2.0.3
+numpy==1.24.3
+faker==19.3.1
+
+# Data Warehouse Connectors
+databricks-sql-connector==2.9.3
+snowflake-connector-python==3.0.4
+google-cloud-bigquery==3.11.4
+
+# dbt
+dbt-core==1.6.0
+dbt-databricks==1.6.0
+dbt-snowflake==1.6.0
+dbt-bigquery==1.6.0
+
+# Airflow
+apache-airflow==2.7.0
+apache-airflow-providers-databricks==4.3.0
+apache-airflow-providers-snowflake==5.0.0
+apache-airflow-providers-google==10.7.0
+
+# Utilities
+pyyaml==6.0.1
+python-dotenv==1.0.0
