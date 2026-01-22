@@ -181,7 +181,7 @@ dbt docs serve
 #### Install Airflow:
 
 ```bash
-pip install apache-airflow==2.7.0
+pip install apache-airflow==2.10.4
 ```
 
 #### Initialize Airflow database:
