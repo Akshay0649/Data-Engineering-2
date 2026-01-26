@@ -89,6 +89,8 @@ The project covers 8 key business domains:
 │   │   ├── dag_dbt_transform.py
 │   │   └── dag_quality_checks.py
 │   └── config/
+├── external_projects/      # External reference projects
+│   └── dbt-project_data-engineering/  # NYC taxi dbt project example
 ├── docs/                   # Documentation
 │   ├── setup.md
 │   ├── architecture.md
@@ -175,6 +177,14 @@ The project includes multiple layers of testing:
 - [Setup Guide](docs/setup.md) - Detailed installation and configuration
 - [Architecture](docs/architecture.md) - System design and data flow
 - [Metrics Guide](docs/metrics.md) - Available metrics and calculations
+
+## 📖 External References
+
+The `external_projects/` directory contains reference implementations and example dbt projects:
+
+- **[dbt-project_data-engineering](external_projects/dbt-project_data-engineering/)** - NYC taxi trip analytics dbt project from Data Engineering Zoomcamp 2024. Excellent example of dbt best practices and dimensional modeling.
+
+These external projects serve as learning resources and reference implementations for analytics engineering patterns.
 
 ## 🔧 Technologies Used
 
